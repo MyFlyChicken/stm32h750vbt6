@@ -1,3 +1,4 @@
+#基于https://github.com/RT-Thread/rt-thread/tree/master/bsp/stm32/stm32h750-weact-ministm32h7xx修改
 # WeAct Studio STM32H7xx Core Board开发板 BSP 说明
 
 ## 简介
