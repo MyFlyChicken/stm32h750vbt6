@@ -14,7 +14,6 @@ build
 Debug
 DebugConfig
 documentation/html
-packages/
 *~
 *.o
 *.obj

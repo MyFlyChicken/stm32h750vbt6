@@ -24,7 +24,7 @@ int main(void)
     //extern void cdc_acm_data_send_with_dtr_test(void);
 
     rt_sdio_init();
-    cdc_acm_msc_init();
+    //cdc_acm_msc_init();
     while (count++)
     {
         //cdc_acm_data_send_with_dtr_test();
