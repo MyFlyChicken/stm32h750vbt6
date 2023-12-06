@@ -51,7 +51,22 @@ menu "Onboard Peripheral Drivers"
                     bool "LCD_BACKLIGHT_USING_GPIO(PE10)"
             endchoice
         endif
+    config BSP_USING_AUDIO
+        bool "Enable AUDIO (WM8978)"
+        select BSP_USING_I2C1
+        select RT_USING_AUDIO
+        default n
 
+        if BSP_USING_AUDIO
+            config BSP_USING_AUDIO_PLAY
+            bool "Enable Audio Play"
+            default y
+
+            config BSP_USING_AUDIO_RECORD
+            bool "Enable Audio Record"
+            select BSP_USING_AUDIO_PLAY
+            default n
+        endif
 endmenu
 
 menu "On-chip Peripheral Drivers"

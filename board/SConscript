@@ -30,6 +30,10 @@ if GetDepend('BSP_USING_LCD_SPI'):
     src = src + ['port/st7735/logo.c']
     path += [cwd + '/port/st7735']
 
+if GetDepend(['BSP_USING_AUDIO']):
+    src += Glob('port/audio/drv_wm8978.c')
+    src += Glob('port/audio/drv_sound.c')
+
 for item in list:
     if os.path.isfile(os.path.join(cwd, item, 'SConscript')):
         objs = objs + SConscript(os.path.join(item, 'SConscript'))

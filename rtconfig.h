@@ -116,6 +116,8 @@
 #define RT_USING_SERIAL
 #define RT_USING_SERIAL_V2
 #define RT_SERIAL_USING_DMA
+#define RT_USING_I2C
+#define RT_USING_I2C_BITOPS
 #define RT_USING_PIN
 #define RT_USING_PWM
 #define RT_USING_MTD_NOR
@@ -135,6 +137,10 @@
 #define RT_SFUD_USING_FLASH_INFO_TABLE
 #define RT_SFUD_USING_QSPI
 #define RT_SFUD_SPI_MAX_HZ 10000000
+#define RT_USING_AUDIO
+#define RT_AUDIO_REPLAY_MP_BLOCK_SIZE 4096
+#define RT_AUDIO_REPLAY_MP_BLOCK_COUNT 2
+#define RT_AUDIO_RECORD_PIPE_SIZE 2048
 
 /* Using USB */
 
@@ -157,6 +163,19 @@
 
 /* Utilities */
 
+#define RT_USING_ULOG
+#define ULOG_OUTPUT_LVL_D
+#define ULOG_OUTPUT_LVL 7
+#define ULOG_ASSERT_ENABLE
+#define ULOG_LINE_BUF_SIZE 128
+
+/* log format */
+
+#define ULOG_USING_COLOR
+#define ULOG_OUTPUT_TIME
+#define ULOG_OUTPUT_LEVEL
+#define ULOG_OUTPUT_TAG
+#define ULOG_BACKEND_USING_CONSOLE
 
 /* RT-Thread online packages */
 
@@ -169,15 +188,6 @@
 
 
 /* Wiced WiFi */
-
-
-/* CYW43012 WiFi */
-
-
-/* BL808 WiFi */
-
-
-/* CYW43439 WiFi */
 
 
 /* IoT Cloud */
@@ -200,6 +210,21 @@
 
 
 /* u8g2: a monochrome graphic library */
+
+#define PKG_USING_WAVPLAYER
+#define PKG_WP_USING_PLAY
+#define PKG_WP_PLAY_DEVICE "sound0"
+#define PKG_USING_WAVPLAYER_LATEST_VERSION
+#define PKG_USING_HELIX
+#define PKG_USING_HELIX_LATEST_VERSION
+#define PKG_USING_MP3PLAYER
+#define MP3_SOUND_DEVICE_NAME "sound0"
+#define MP3_INPUT_BUFFER_SIZE 2048
+#define MP3_OUTPUT_BUFFER_SIZE 4608
+#define MP3_PLAYER_VOLUME_DEFAULT 30
+#define PKG_USING_MP3PLAYER_LATEST_VERSION
+
+/* PainterEngine: A cross-platform graphics application framework written in C language */
 
 
 /* tools packages */
@@ -239,19 +264,11 @@
 
 /* peripheral libraries and drivers */
 
-/* sensors drivers */
-
-
-/* touch drivers */
-
 
 /* Kendryte SDK */
 
 
 /* AI packages */
-
-
-/* Signal Processing and Control Algorithm Packages */
 
 
 /* miscellaneous packages */
@@ -263,11 +280,13 @@
 
 /* entertainment: terminal games and other interesting software packages */
 
+#define PKG_USING_OPTPARSE
+#define PKG_USING_OPTPARSE_LATEST_VERSION
 
 /* Arduino libraries */
 
 
-/* Projects and Demos */
+/* Projects */
 
 
 /* Sensors */
@@ -286,12 +305,10 @@
 
 /* Communication */
 
-
 /* Device Control */
 
 
 /* Other */
-
 
 /* Signal IO */
 
@@ -311,6 +328,8 @@
 #define BSP_USING_QSPI_FLASH
 #define BSP_USING_LCD_SPI
 #define LCD_BACKLIGHT_USING_GPIO
+#define BSP_USING_AUDIO
+#define BSP_USING_AUDIO_PLAY
 
 /* On-chip Peripheral Drivers */
 
@@ -321,6 +340,9 @@
 #define BSP_USING_SPI
 #define BSP_USING_SPI1
 #define BSP_USING_SPI4
+#define BSP_USING_I2C1
+#define BSP_I2C1_SCL_PIN 135
+#define BSP_I2C1_SDA_PIN 95
 #define BSP_USING_PWM
 #define BSP_USING_PWM1
 #define BSP_USING_PWM1_CH2

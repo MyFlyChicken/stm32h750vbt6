@@ -1,5 +1,20 @@
 [
  {
+  "path": "/packages/multimedia/wavplayer", 
+  "ver": "latest", 
+  "name": "WAVPLAYER"
+ }, 
+ {
+  "path": "/packages/multimedia/helix", 
+  "ver": "latest", 
+  "name": "HELIX"
+ }, 
+ {
+  "path": "/packages/multimedia/mp3player", 
+  "ver": "latest", 
+  "name": "MP3PLAYER"
+ }, 
+ {
   "path": "/packages/system/littlefs", 
   "ver": "latest", 
   "name": "LITTLEFS"
@@ -8,5 +23,10 @@
   "path": "/packages/system/CherryUSB", 
   "ver": "latest", 
   "name": "CHERRYUSB"
+ }, 
+ {
+  "path": "/packages/misc/optparse", 
+  "ver": "latest", 
+  "name": "OPTPARSE"
  }
 ]
