@@ -11,6 +11,7 @@
 #include <drivers/mmcsd_core.h>
 #include <drivers/sdio.h>
 #include <drivers/sd.h>
+#include <dfs_fs.h>
 
 #define DBG_TAG               "SDIO"
 #ifdef RT_SDIO_DEBUG
@@ -1409,24 +1410,24 @@ void rt_sdio_init(void)
 {
     rt_thread_mdelay(1000);//这段延时必须加上，系统上电过程中存在延时，否则会出现先挂载后注册块设备sd0的情况
     
-//    if(0 != dfs_mount("sd0","/","elm",0,0)) //挂载文件系统，参数：块设备名称、挂载目录、文件系统类型、读写标志、私有数据0
-//    {
-//        rt_kprintf("mkfs elm sd0\r\n");
-//        mkfs("elm","sd0");//挂在前需格式化
-//    }
-//    else
-//    {
-//        rt_kprintf("dfs mount success\r\n");
-//    }
+   if(0 != dfs_mount("sd0","/","elm",0,0)) //挂载文件系统，参数：块设备名称、挂载目录、文件系统类型、读写标志、私有数据0
+   {
+       rt_kprintf("mkfs elm sd0\r\n");
+       dfs_mkfs("elm","/sd0");//挂在前需格式化
+   }
+   else
+   {
+       rt_kprintf("dfs mount success\r\n");
+   }
 
-//    if (0 != dfs_mount("sd0","/","elm", 0, 0))
-//    {
-//        rt_kprintf("dfs mount failed\r\n");
-//    }
-//    else
-//    {
-//        rt_kprintf("dfs mount success\r\n");
-//    } 
+   if (0 != dfs_mount("sd0","/","elm", 0, 0))
+   {
+       rt_kprintf("dfs mount failed\r\n");
+   }
+   else
+   {
+       rt_kprintf("dfs mount success\r\n");
+   } 
 }
 
 

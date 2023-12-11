@@ -73,7 +73,7 @@
         <LExpSel>0</LExpSel>
       </OPTXL>
       <OPTFL>
-        <tvExp>1</tvExp>
+        <tvExp>0</tvExp>
         <tvExpOptDlg>0</tvExpOptDlg>
         <IsCurrentTarget>1</IsCurrentTarget>
       </OPTFL>
@@ -103,7 +103,7 @@
         <bEvRecOn>1</bEvRecOn>
         <bSchkAxf>0</bSchkAxf>
         <bTchkAxf>0</bTchkAxf>
-        <nTsel>4</nTsel>
+        <nTsel>3</nTsel>
         <sDll></sDll>
         <sDllPa></sDllPa>
         <sDlgDll></sDlgDll>
@@ -114,9 +114,14 @@
         <tDlgDll></tDlgDll>
         <tDlgPa></tDlgPa>
         <tIfile></tIfile>
-        <pMon>Segger\JL2CM3.dll</pMon>
+        <pMon>BIN\CMSIS_AGDI.dll</pMon>
       </DebugOpt>
       <TargetDriverDllRegistry>
+        <SetRegEntry>
+          <Number>0</Number>
+          <Key>CMSIS_AGDI</Key>
+          <Name>-X"Any" -UAny -O206 -S8 -C0 -P00000000 -N00("ARM CoreSight SW-DP") -D00(6BA02477) -L00(0) -TO65554 -TC10000000 -TT10000000 -TP20 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO15 -FD20000000 -FC8000 -FN1 -FF0STM32H7x_2048.FLM -FS08000000 -FL0200000 -FP0($$Device:STM32H743IIKx$CMSIS\Flash\STM32H7x_2048.FLM)</Name>
+        </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
           <Key>JL2CM3</Key>
@@ -194,8 +199,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>applications\usb_init.c</PathWithFileName>
-      <FilenameWithoutPath>usb_init.c</FilenameWithoutPath>
+      <PathWithFileName>applications\main.c</PathWithFileName>
+      <FilenameWithoutPath>main.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -206,8 +211,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>applications\main.c</PathWithFileName>
-      <FilenameWithoutPath>main.c</FilenameWithoutPath>
+      <PathWithFileName>applications\usb_init.c</PathWithFileName>
+      <FilenameWithoutPath>usb_init.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -226,30 +231,6 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>packages\CherryUSB-latest\port\dwc2\usb_glue_st.c</PathWithFileName>
-      <FilenameWithoutPath>usb_glue_st.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>4</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>packages\CherryUSB-latest\class\cdc\usbd_cdc.c</PathWithFileName>
-      <FilenameWithoutPath>usbd_cdc.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>5</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
       <PathWithFileName>packages\CherryUSB-latest\port\dwc2\usb_dc_dwc2.c</PathWithFileName>
       <FilenameWithoutPath>usb_dc_dwc2.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
@@ -257,19 +238,7 @@
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>6</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>packages\CherryUSB-latest\core\usbd_core.c</PathWithFileName>
-      <FilenameWithoutPath>usbd_core.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>7</FileNumber>
+      <FileNumber>4</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -281,13 +250,49 @@
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
+      <FileNumber>5</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>packages\CherryUSB-latest\class\cdc\usbd_cdc.c</PathWithFileName>
+      <FilenameWithoutPath>usbd_cdc.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>2</GroupNumber>
+      <FileNumber>6</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>packages\CherryUSB-latest\port\dwc2\usb_glue_st.c</PathWithFileName>
+      <FilenameWithoutPath>usb_glue_st.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>2</GroupNumber>
+      <FileNumber>7</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>packages\CherryUSB-latest\core\usbd_core.c</PathWithFileName>
+      <FilenameWithoutPath>usbd_core.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>2</GroupNumber>
       <FileNumber>8</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>packages\CherryUSB-latest\third_party\rt-thread-5.0\msh_cmd.c</PathWithFileName>
-      <FilenameWithoutPath>msh_cmd.c</FilenameWithoutPath>
+      <PathWithFileName>packages\CherryUSB-latest\demo\cdc_acm_template.c</PathWithFileName>
+      <FilenameWithoutPath>cdc_acm_template.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -298,8 +303,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>packages\CherryUSB-latest\demo\cdc_acm_template.c</PathWithFileName>
-      <FilenameWithoutPath>cdc_acm_template.c</FilenameWithoutPath>
+      <PathWithFileName>packages\CherryUSB-latest\third_party\rt-thread-5.0\msh_cmd.c</PathWithFileName>
+      <FilenameWithoutPath>msh_cmd.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1154,8 +1159,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>rt-thread\components\fal\src\fal_rtt.c</PathWithFileName>
-      <FilenameWithoutPath>fal_rtt.c</FilenameWithoutPath>
+      <PathWithFileName>rt-thread\components\fal\src\fal.c</PathWithFileName>
+      <FilenameWithoutPath>fal.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1166,26 +1171,14 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>rt-thread\components\fal\src\fal_partition.c</PathWithFileName>
-      <FilenameWithoutPath>fal_partition.c</FilenameWithoutPath>
+      <PathWithFileName>rt-thread\components\fal\src\fal_rtt.c</PathWithFileName>
+      <FilenameWithoutPath>fal_rtt.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>7</GroupNumber>
       <FileNumber>79</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>rt-thread\components\fal\src\fal.c</PathWithFileName>
-      <FilenameWithoutPath>fal.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>7</GroupNumber>
-      <FileNumber>80</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1197,13 +1190,25 @@
     </File>
     <File>
       <GroupNumber>7</GroupNumber>
-      <FileNumber>81</FileNumber>
+      <FileNumber>80</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>rt-thread\components\fal\src\fal_flash.c</PathWithFileName>
       <FilenameWithoutPath>fal_flash.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>7</GroupNumber>
+      <FileNumber>81</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>rt-thread\components\fal\src\fal_partition.c</PathWithFileName>
+      <FilenameWithoutPath>fal_partition.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1390,12 +1395,12 @@
     <File>
       <GroupNumber>10</GroupNumber>
       <FileNumber>95</FileNumber>
-      <FileType>1</FileType>
+      <FileType>2</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>packages\helix-latest\real\trigtabs.c</PathWithFileName>
-      <FilenameWithoutPath>trigtabs.c</FilenameWithoutPath>
+      <PathWithFileName>packages\helix-latest\real\arm\asmpoly_thumb2_rvds.s</PathWithFileName>
+      <FilenameWithoutPath>asmpoly_thumb2_rvds.s</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1406,8 +1411,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>packages\helix-latest\real\scalfact.c</PathWithFileName>
-      <FilenameWithoutPath>scalfact.c</FilenameWithoutPath>
+      <PathWithFileName>packages\helix-latest\real\dct32.c</PathWithFileName>
+      <FilenameWithoutPath>dct32.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1418,8 +1423,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>packages\helix-latest\real\hufftabs.c</PathWithFileName>
-      <FilenameWithoutPath>hufftabs.c</FilenameWithoutPath>
+      <PathWithFileName>packages\helix-latest\real\subband.c</PathWithFileName>
+      <FilenameWithoutPath>subband.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1442,20 +1447,20 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>packages\helix-latest\real\imdct.c</PathWithFileName>
-      <FilenameWithoutPath>imdct.c</FilenameWithoutPath>
+      <PathWithFileName>packages\helix-latest\real\dqchan.c</PathWithFileName>
+      <FilenameWithoutPath>dqchan.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>10</GroupNumber>
       <FileNumber>100</FileNumber>
-      <FileType>2</FileType>
+      <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>packages\helix-latest\real\arm\asmpoly_thumb2_rvds.s</PathWithFileName>
-      <FilenameWithoutPath>asmpoly_thumb2_rvds.s</FilenameWithoutPath>
+      <PathWithFileName>packages\helix-latest\real\hufftabs.c</PathWithFileName>
+      <FilenameWithoutPath>hufftabs.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1466,8 +1471,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>packages\helix-latest\real\subband.c</PathWithFileName>
-      <FilenameWithoutPath>subband.c</FilenameWithoutPath>
+      <PathWithFileName>packages\helix-latest\real\trigtabs.c</PathWithFileName>
+      <FilenameWithoutPath>trigtabs.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1478,8 +1483,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>packages\helix-latest\real\dct32.c</PathWithFileName>
-      <FilenameWithoutPath>dct32.c</FilenameWithoutPath>
+      <PathWithFileName>packages\helix-latest\mp3dec.c</PathWithFileName>
+      <FilenameWithoutPath>mp3dec.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1490,8 +1495,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>packages\helix-latest\real\dqchan.c</PathWithFileName>
-      <FilenameWithoutPath>dqchan.c</FilenameWithoutPath>
+      <PathWithFileName>packages\helix-latest\mp3tabs.c</PathWithFileName>
+      <FilenameWithoutPath>mp3tabs.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1526,14 +1531,26 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>packages\helix-latest\mp3tabs.c</PathWithFileName>
-      <FilenameWithoutPath>mp3tabs.c</FilenameWithoutPath>
+      <PathWithFileName>packages\helix-latest\real\dequant.c</PathWithFileName>
+      <FilenameWithoutPath>dequant.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>10</GroupNumber>
       <FileNumber>107</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>packages\helix-latest\real\imdct.c</PathWithFileName>
+      <FilenameWithoutPath>imdct.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>108</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1545,7 +1562,7 @@
     </File>
     <File>
       <GroupNumber>10</GroupNumber>
-      <FileNumber>108</FileNumber>
+      <FileNumber>109</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1557,25 +1574,13 @@
     </File>
     <File>
       <GroupNumber>10</GroupNumber>
-      <FileNumber>109</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>packages\helix-latest\mp3dec.c</PathWithFileName>
-      <FilenameWithoutPath>mp3dec.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>10</GroupNumber>
       <FileNumber>110</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>packages\helix-latest\real\dequant.c</PathWithFileName>
-      <FilenameWithoutPath>dequant.c</FilenameWithoutPath>
+      <PathWithFileName>packages\helix-latest\real\scalfact.c</PathWithFileName>
+      <FilenameWithoutPath>scalfact.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1747,7 +1752,7 @@
 
   <Group>
     <GroupName>Libraries</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1911,7 +1916,7 @@
       <GroupNumber>12</GroupNumber>
       <FileNumber>137</FileNumber>
       <FileType>1</FileType>
-      <tvExp>1</tvExp>
+      <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>libraries\STM32H7xx_HAL\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_i2s.c</PathWithFileName>

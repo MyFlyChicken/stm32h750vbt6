@@ -6,7 +6,7 @@
 
 /* RT-Thread Kernel */
 
-#define RT_NAME_MAX 8
+#define RT_NAME_MAX 16
 #define RT_ALIGN_SIZE 8
 #define RT_THREAD_PRIORITY_32
 #define RT_THREAD_PRIORITY_MAX 32
@@ -17,6 +17,9 @@
 #define RT_USING_IDLE_HOOK
 #define RT_IDLE_HOOK_LIST_SIZE 4
 #define IDLE_THREAD_STACK_SIZE 256
+#define RT_USING_TIMER_SOFT
+#define RT_TIMER_THREAD_PRIO 4
+#define RT_TIMER_THREAD_STACK_SIZE 512
 
 /* kservice optimization */
 
@@ -81,7 +84,7 @@
 
 #define RT_USING_DFS
 #define DFS_USING_POSIX
-#define DFS_USING_WORKDIR
+#define RT_USING_DFS_MNTTABLE
 #define DFS_FD_MAX 16
 #define RT_USING_DFS_V1
 #define DFS_FILESYSTEMS_MAX 4

@@ -11,9 +11,17 @@
 #include <rtthread.h>
 #include <rtdevice.h>
 #include <board.h>
+#include <dfs_fs.h>
 
 /* defined the LED0 pin: PE3 */
 #define LED0_PIN    GET_PIN(E, 3)
+
+/* TODO */
+const struct dfs_mount_tbl mount_table[2] =
+{
+    {"sdio0", "/","elm", 0, 0},
+    {0}
+};
 
 int main(void)
 {
