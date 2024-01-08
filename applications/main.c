@@ -19,7 +19,7 @@
 /* TODO */
 const struct dfs_mount_tbl mount_table[2] =
 {
-    {"sdio0", "/","elm", 0, 0},
+    {"sd0", "/","lfs", 0, 0},
     {0}
 };
 
@@ -31,7 +31,7 @@ int main(void)
     extern void cdc_acm_msc_init(void);
     //extern void cdc_acm_data_send_with_dtr_test(void);
 
-    //rt_sdio_init();
+    rt_sdio_init();
     //cdc_acm_msc_init();
     while (count++)
     {

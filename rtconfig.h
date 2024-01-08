@@ -155,6 +155,9 @@
 
 /* POSIX (Portable Operating System Interface) layer */
 
+#define RT_USING_POSIX_FS
+#define RT_USING_POSIX_DEVIO
+#define RT_USING_POSIX_STDIO
 
 /* Interprocess Communication (IPC) */
 
@@ -330,8 +333,8 @@
 
 #define BSP_USING_SPI_FLASH
 #define BSP_USING_QSPI_FLASH
-#define BSP_USING_LCD_SPI
-#define LCD_BACKLIGHT_USING_GPIO
+#define BSP_USING_AUDIO
+#define BSP_USING_AUDIO_PLAY
 
 /* On-chip Peripheral Drivers */
 
