@@ -212,7 +212,7 @@
             <Ra2Chk>0</Ra2Chk>
             <Ra3Chk>0</Ra3Chk>
             <Im1Chk>1</Im1Chk>
-            <Im2Chk>0</Im2Chk>
+            <Im2Chk>1</Im2Chk>
             <OnChipMemories>
               <Ocm1>
                 <Type>0</Type>
@@ -338,9 +338,9 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>__STDC_LIMIT_MACROS,STM32H750xx,RT_USING_ARMLIBC, RT_USING_LIBC, __CLK_TCK=RT_TICK_PER_SECOND, CONFIG_USB_DWC2_PORT=FS_PORT, __RTTHREAD__, USE_HAL_DRIVER</Define>
+              <Define>__STDC_LIMIT_MACROS, RT_USING_ARMLIBC, STM32H750xx, RT_USING_LIBC, __CLK_TCK=RT_TICK_PER_SECOND, __RTTHREAD__, USE_HAL_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>rt-thread\components\fal\inc;rt-thread\components\libc\compilers\common\extension;libraries\HAL_Drivers\CMSIS\Include;rt-thread\libcpu\arm\common;packages\CherryUSB-latest\class\dfu;libraries\HAL_Drivers;packages\CherryUSB-latest\osal;rt-thread\components\libc\posix\ipc;packages\helix-latest\pub;rt-thread\components\drivers\include;packages\wavplayer-latest;rt-thread\libcpu\arm\cortex-m7;rt-thread\components\utilities\ulog;rt-thread\components\drivers\include;rt-thread\components\libc\posix\io\poll;libraries\HAL_Drivers\config;packages\CherryUSB-latest\class\hid;rt-thread\components\libc\compilers\common\extension\fcntl\octal;packages\helix-latest\real;.;rt-thread\components\drivers\include;board;board\CubeMX_Config\Inc;packages\optparse-latest;packages\mp3player-latest;rt-thread\components\drivers\include;packages\CherryUSB-latest\class\cdc;rt-thread\components\drivers\include;rt-thread\components\finsh;rt-thread\components\drivers\include;rt-thread\components\dfs\dfs_v1\include;packages\wavplayer-latest\inc;rt-thread\components\libc\posix\io\stdio;board\port;applications;packages\CherryUSB-latest\class\audio;rt-thread\components\dfs\dfs_v1\filesystems\devfs;rt-thread\components\drivers\spi\sfud\inc;rt-thread\components\drivers\include;rt-thread\components\drivers\include;libraries\STM32H7xx_HAL\CMSIS\Device\ST\STM32H7xx\Include;rt-thread\components\drivers\spi;packages\CherryUSB-latest\class\msc;packages\CherryUSB-latest\class\wireless;libraries\STM32H7xx_HAL\STM32H7xx_HAL_Driver\Inc;rt-thread\components\libc\compilers\common\include;packages\CherryUSB-latest\common;rt-thread\include;packages\CherryUSB-latest\class\video;packages\CherryUSB-latest\core;rt-thread\components\dfs\dfs_v1\filesystems\elmfat;libraries\HAL_Drivers\drv_flash;packages\mp3player-latest\inc;rt-thread\components\drivers\audio</IncludePath>
+              <IncludePath>packages\helix-latest\real;libraries\HAL_Drivers;rt-thread\components\fal\inc;rt-thread\libcpu\arm\common;libraries\HAL_Drivers\drv_flash;rt-thread\components\drivers\include;rt-thread\components\drivers\include;libraries\STM32H7xx_HAL\CMSIS\Device\ST\STM32H7xx\Include;board;rt-thread\components\drivers\include;packages\CherryUSB-latest\class\wireless;rt-thread\components\drivers\include;packages\CherryUSB-latest\osal;packages\CherryUSB-latest\core;rt-thread\components\libc\compilers\common\extension\fcntl\octal;rt-thread\components\libc\posix\io\stdio;packages\CherryUSB-latest\class\cdc;rt-thread\components\finsh;packages\CherryUSB-latest\class\dfu;rt-thread\include;packages\CherryUSB-latest\class\hid;rt-thread\components\drivers\include;rt-thread\components\libc\compilers\common\include;libraries\STM32H7xx_HAL\STM32H7xx_HAL_Driver\Inc;rt-thread\components\drivers\audio;packages\CherryUSB-latest\class\audio;packages\mp3player-latest\inc;rt-thread\components\dfs\dfs_v1\filesystems\elmfat;packages\CherryUSB-latest\common;libraries\HAL_Drivers\CMSIS\Include;libraries\HAL_Drivers\config;rt-thread\components\dfs\dfs_v1\include;packages\optparse-latest;packages\CherryUSB-latest\class\msc;rt-thread\components\utilities\ulog;board\CubeMX_Config\Inc;packages\CherryUSB-latest\class\video;rt-thread\components\drivers\include;rt-thread\components\libc\compilers\common\extension;rt-thread\components\drivers\spi;rt-thread\components\libc\posix\io\poll;board\port;rt-thread\components\drivers\spi\sfud\inc;rt-thread\components\drivers\include;.;rt-thread\libcpu\arm\cortex-m7;packages\mp3player-latest;rt-thread\components\dfs\dfs_v1\filesystems\devfs;rt-thread\components\libc\posix\ipc;packages\helix-latest\pub;applications;rt-thread\components\drivers\include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -400,29 +400,9 @@
           <GroupName>CherryUSB</GroupName>
           <Files>
             <File>
-              <FileName>usb_glue_st.c</FileName>
+              <FileName>usbd_audio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>packages\CherryUSB-latest\port\dwc2\usb_glue_st.c</FilePath>
-            </File>
-            <File>
-              <FileName>msh_cmd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\CherryUSB-latest\third_party\rt-thread-5.0\msh_cmd.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbd_cdc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\CherryUSB-latest\class\cdc\usbd_cdc.c</FilePath>
-            </File>
-            <File>
-              <FileName>cdc_acm_template.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\CherryUSB-latest\demo\cdc_acm_template.c</FilePath>
-            </File>
-            <File>
-              <FileName>usb_osal_rtthread.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\CherryUSB-latest\osal\usb_osal_rtthread.c</FilePath>
+              <FilePath>packages\CherryUSB-latest\class\audio\usbd_audio.c</FilePath>
             </File>
             <File>
               <FileName>usbd_core.c</FileName>
@@ -433,6 +413,26 @@
               <FileName>usb_dc_dwc2.c</FileName>
               <FileType>1</FileType>
               <FilePath>packages\CherryUSB-latest\port\dwc2\usb_dc_dwc2.c</FilePath>
+            </File>
+            <File>
+              <FileName>usb_osal_rtthread.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\CherryUSB-latest\osal\usb_osal_rtthread.c</FilePath>
+            </File>
+            <File>
+              <FileName>msh_cmd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\CherryUSB-latest\third_party\rt-thread-5.0\msh_cmd.c</FilePath>
+            </File>
+            <File>
+              <FileName>usb_glue_st.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\CherryUSB-latest\port\dwc2\usb_glue_st.c</FilePath>
+            </File>
+            <File>
+              <FileName>audio_v2_mic_speaker_multichan_template.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\packages\CherryUSB-latest\demo\audio_v2_mic_speaker_multichan_template.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2300,6 +2300,11 @@
           <GroupName>Fal</GroupName>
           <Files>
             <File>
+              <FileName>fal_partition.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\fal\src\fal_partition.c</FilePath>
+            </File>
+            <File>
               <FileName>fal_flash_sfud_port.c</FileName>
               <FileType>1</FileType>
               <FilePath>rt-thread\components\fal\samples\porting\fal_flash_sfud_port.c</FilePath>
@@ -2310,19 +2315,14 @@
               <FilePath>rt-thread\components\fal\src\fal.c</FilePath>
             </File>
             <File>
-              <FileName>fal_flash.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>rt-thread\components\fal\src\fal_flash.c</FilePath>
-            </File>
-            <File>
-              <FileName>fal_partition.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>rt-thread\components\fal\src\fal_partition.c</FilePath>
-            </File>
-            <File>
               <FileName>fal_rtt.c</FileName>
               <FileType>1</FileType>
               <FilePath>rt-thread\components\fal\src\fal_rtt.c</FilePath>
+            </File>
+            <File>
+              <FileName>fal_flash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\fal\src\fal_flash.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2405,59 +2405,9 @@
           <GroupName>Helix</GroupName>
           <Files>
             <File>
-              <FileName>dequant.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\helix-latest\real\dequant.c</FilePath>
-            </File>
-            <File>
-              <FileName>asmpoly_thumb2_rvds.s</FileName>
-              <FileType>2</FileType>
-              <FilePath>packages\helix-latest\real\arm\asmpoly_thumb2_rvds.s</FilePath>
-            </File>
-            <File>
-              <FileName>bitstream.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\helix-latest\real\bitstream.c</FilePath>
-            </File>
-            <File>
-              <FileName>huffman.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\helix-latest\real\huffman.c</FilePath>
-            </File>
-            <File>
-              <FileName>mp3dec.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\helix-latest\mp3dec.c</FilePath>
-            </File>
-            <File>
-              <FileName>dqchan.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\helix-latest\real\dqchan.c</FilePath>
-            </File>
-            <File>
-              <FileName>trigtabs.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\helix-latest\real\trigtabs.c</FilePath>
-            </File>
-            <File>
-              <FileName>asmmisc_rvds.s</FileName>
-              <FileType>2</FileType>
-              <FilePath>packages\helix-latest\real\arm\asmmisc_rvds.s</FilePath>
-            </File>
-            <File>
               <FileName>imdct.c</FileName>
               <FileType>1</FileType>
               <FilePath>packages\helix-latest\real\imdct.c</FilePath>
-            </File>
-            <File>
-              <FileName>dct32.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\helix-latest\real\dct32.c</FilePath>
-            </File>
-            <File>
-              <FileName>stproc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\helix-latest\real\stproc.c</FilePath>
             </File>
             <File>
               <FileName>mp3tabs.c</FileName>
@@ -2465,19 +2415,69 @@
               <FilePath>packages\helix-latest\mp3tabs.c</FilePath>
             </File>
             <File>
-              <FileName>subband.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\helix-latest\real\subband.c</FilePath>
-            </File>
-            <File>
               <FileName>buffers.c</FileName>
               <FileType>1</FileType>
               <FilePath>packages\helix-latest\real\buffers.c</FilePath>
             </File>
             <File>
+              <FileName>asmpoly_thumb2_rvds.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>packages\helix-latest\real\arm\asmpoly_thumb2_rvds.s</FilePath>
+            </File>
+            <File>
+              <FileName>dct32.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\helix-latest\real\dct32.c</FilePath>
+            </File>
+            <File>
+              <FileName>trigtabs.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\helix-latest\real\trigtabs.c</FilePath>
+            </File>
+            <File>
+              <FileName>bitstream.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\helix-latest\real\bitstream.c</FilePath>
+            </File>
+            <File>
               <FileName>hufftabs.c</FileName>
               <FileType>1</FileType>
               <FilePath>packages\helix-latest\real\hufftabs.c</FilePath>
+            </File>
+            <File>
+              <FileName>mp3dec.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\helix-latest\mp3dec.c</FilePath>
+            </File>
+            <File>
+              <FileName>asmmisc_rvds.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>packages\helix-latest\real\arm\asmmisc_rvds.s</FilePath>
+            </File>
+            <File>
+              <FileName>huffman.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\helix-latest\real\huffman.c</FilePath>
+            </File>
+            <File>
+              <FileName>subband.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\helix-latest\real\subband.c</FilePath>
+            </File>
+            <File>
+              <FileName>stproc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\helix-latest\real\stproc.c</FilePath>
+            </File>
+            <File>
+              <FileName>dqchan.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\helix-latest\real\dqchan.c</FilePath>
+            </File>
+            <File>
+              <FileName>dequant.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\helix-latest\real\dequant.c</FilePath>
             </File>
             <File>
               <FileName>scalfact.c</FileName>
@@ -2810,34 +2810,14 @@
           <GroupName>Utilities</GroupName>
           <Files>
             <File>
-              <FileName>ulog.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>rt-thread\components\utilities\ulog\ulog.c</FilePath>
-            </File>
-            <File>
               <FileName>console_be.c</FileName>
               <FileType>1</FileType>
               <FilePath>rt-thread\components\utilities\ulog\backend\console_be.c</FilePath>
             </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>wavplayer</GroupName>
-          <Files>
             <File>
-              <FileName>wavplayer.c</FileName>
+              <FileName>ulog.c</FileName>
               <FileType>1</FileType>
-              <FilePath>packages\wavplayer-latest\src\wavplayer.c</FilePath>
-            </File>
-            <File>
-              <FileName>wavplayer_cmd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\wavplayer-latest\src\wavplayer_cmd.c</FilePath>
-            </File>
-            <File>
-              <FileName>wavhdr.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\wavplayer-latest\src\wavhdr.c</FilePath>
+              <FilePath>rt-thread\components\utilities\ulog\ulog.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2854,7 +2834,7 @@
   <LayerInfo>
     <Layers>
       <Layer>
-        <LayName>project</LayName>
+        <LayName>&lt;Project Info&gt;</LayName>
         <LayTarg>0</LayTarg>
         <LayPrjMark>1</LayPrjMark>
       </Layer>
