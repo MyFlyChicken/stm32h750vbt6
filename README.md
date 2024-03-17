@@ -1,38 +1,10 @@
 # WeAct Studio STM32H7xx Core Board开发板 BSP 说明
 
-##SDIO
+## 注意事项
+### SDIO
 sdio需要配置drv_sdio内的cache_buf分配在AXI_SRAM(0x24000000)上，否则会造成SD卡能读取容量，却初始化失败
-
-## 简介
-
-本文档为 WeAct Studio STM32H7xx Core Board 开发板的 BSP (板级支持包) 说明。
-
-主要内容如下：
-
-- 开发板资源介绍
-- BSP 快速上手
-- 进阶使用方法
-
-通过阅读快速上手章节开发者可以快速地上手该 BSP，将 RT-Thread 运行在开发板上。在进阶使用指南章节，将会介绍更多高级功能，帮助开发者利用 RT-Thread 驱动更多板载资源。
-
-## 开发板介绍
-
-STM32H7xx Core Board 是 WeAct Studio 推出的一款基于 ARM Cortex-M7 内核的核心板，最高频率为480Mhz，具有128KB ROM（实际上 2MB ROM 可用）、1MB RAM，外接8MB SPI Flash和8MB QSPI Flash，所具有的按键和接口如下：
-
-* 2*22 Pin 2.54mm I/O x 2
-* 4 Pin 2.54mm SW x 1
-* USB C (type C) x 1
-* MicroSD TF x 1
-* 8Bit DCMI x 1
-* User Key K1 (PC13) x 1
-* NRST Key x 1
-* BOOT0 Key x 1
-
-开发板外观如下图所示：
-
-![board](figures/board.jpg)
-
-开发板更多详细信息请参考[STM32H7xx Core Board](https://github.com/WeActTC/MiniSTM32H7xx)。
+### DMA
+DMA2无法访问0x20000000地址的RAM
 
 ## 外设支持
 
@@ -117,6 +89,12 @@ msh />
   - 在 keil 中芯片选为 H743 ，此时会出现 2MB Flash 的下载算法，选择此下载算法下载程序
   - 将该文件夹下 STM32H7x_2048.FLM 放到 `Keil安装目录\Keil_v5\ARM\Flash` 中，并选择此下载算法
   - 其余方式下载代码情况类似
+  
+- 如果固件超过 128k ，且使用pyocd下载请注意：
+
+  - 拷贝Keil.STM32H7xx_DFP.3.1.1.pack到本文档同文件夹
+  - 编写pyocd_user.py加载自定义脚本
+
 - 调试串口为串口1 映射说明
 
     PB14     ------> USART1_TX
