@@ -9,19 +9,21 @@
  */
 
 #include "board.h"
+#include "rtdef.h"
+#include <stdint.h>
 
-#define AXI_SRAM_ADDR (0X24020000)
-#define AXI_SRAM_SIZE (512*1024)
-#define SRAM1_ADDR (0X30000000)
-#define SRAM1_SIZE (128*1024)
-#define SRAM2_ADDR (0X30020000)
-#define SRAM2_SIZE (128*1024)
-#define SRAM3_ADDR (0X30040000)
-#define SRAM3_SIZE (32*1024)
-#define SRAM4_ADDR (0X38000000)
-#define SRAM4_SIZE (64*1024)
-#define BACKUP_ADDR (0X38800000)
-#define BACKUP_SIZE (4*1024)
+#define AXI_SRAM_ADDR (0x24022000)
+#define AXI_SRAM_SIZE (0x0005E000)
+#define SRAM1_ADDR    (0X30000000)
+#define SRAM1_SIZE    (128 * 1024)
+#define SRAM2_ADDR    (0X30020000)
+#define SRAM2_SIZE    (128 * 1024)
+#define SRAM3_ADDR    (0X30040000)
+#define SRAM3_SIZE    (32 * 1024)
+#define SRAM4_ADDR    (0X38000000)
+#define SRAM4_SIZE    (64 * 1024)
+#define BACKUP_ADDR   (0X38800000)
+#define BACKUP_SIZE   (4 * 1024)
 
 static struct rt_memheap _heap_axi_sram;
 static struct rt_memheap _heap_sram1;
@@ -102,90 +104,109 @@ void SystemClock_Config(void)
 }
 #else
 {
-  RCC_OscInitTypeDef RCC_OscInitStruct = {0};
-  RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
-  RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
+    RCC_OscInitTypeDef       RCC_OscInitStruct   = {0};
+    RCC_ClkInitTypeDef       RCC_ClkInitStruct   = {0};
+    RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
 
-  /** Supply configuration update enable
+    /** Supply configuration update enable
   */
-  HAL_PWREx_ConfigSupply(PWR_LDO_SUPPLY);
+    HAL_PWREx_ConfigSupply(PWR_LDO_SUPPLY);
 
-  /** Configure the main internal regulator output voltage
+    /** Configure the main internal regulator output voltage
   */
-  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
+    __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
 
-  while(!__HAL_PWR_GET_FLAG(PWR_FLAG_VOSRDY)) {}
+    while (!__HAL_PWR_GET_FLAG(PWR_FLAG_VOSRDY))
+    {
+    }
 
-  __HAL_RCC_SYSCFG_CLK_ENABLE();
-  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE0);
+    __HAL_RCC_SYSCFG_CLK_ENABLE();
+    __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE0);
 
-  while(!__HAL_PWR_GET_FLAG(PWR_FLAG_VOSRDY)) {}
+    while (!__HAL_PWR_GET_FLAG(PWR_FLAG_VOSRDY))
+    {
+    }
 
-  /** Configure LSE Drive Capability
+    /** Configure LSE Drive Capability
   */
-  HAL_PWR_EnableBkUpAccess();
-  __HAL_RCC_LSEDRIVE_CONFIG(RCC_LSEDRIVE_LOW);
+    HAL_PWR_EnableBkUpAccess();
+    __HAL_RCC_LSEDRIVE_CONFIG(RCC_LSEDRIVE_LOW);
 
-  /** Macro to configure the PLL clock source
+    /** Macro to configure the PLL clock source
   */
-  __HAL_RCC_PLL_PLLSOURCE_CONFIG(RCC_PLLSOURCE_HSE);
+    __HAL_RCC_PLL_PLLSOURCE_CONFIG(RCC_PLLSOURCE_HSE);
 
-  /** Initializes the RCC Oscillators according to the specified parameters
+    /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE|RCC_OSCILLATORTYPE_LSE;
-  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
-  RCC_OscInitStruct.LSEState = RCC_LSE_ON;
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
-  RCC_OscInitStruct.PLL.PLLM = 5;
-  RCC_OscInitStruct.PLL.PLLN = 192;
-  RCC_OscInitStruct.PLL.PLLP = 2;
-  RCC_OscInitStruct.PLL.PLLQ = 20;
-  RCC_OscInitStruct.PLL.PLLR = 2;
-  RCC_OscInitStruct.PLL.PLLRGE = RCC_PLL1VCIRANGE_2;
-  RCC_OscInitStruct.PLL.PLLVCOSEL = RCC_PLL1VCOWIDE;
-  RCC_OscInitStruct.PLL.PLLFRACN = 0;
-  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
-  {
-    Error_Handler();
-  }
+    RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE | RCC_OSCILLATORTYPE_LSE;
+    RCC_OscInitStruct.HSEState       = RCC_HSE_ON;
+    RCC_OscInitStruct.LSEState       = RCC_LSE_ON;
+    RCC_OscInitStruct.PLL.PLLState   = RCC_PLL_ON;
+    RCC_OscInitStruct.PLL.PLLSource  = RCC_PLLSOURCE_HSE;
+    RCC_OscInitStruct.PLL.PLLM       = 5;
+    RCC_OscInitStruct.PLL.PLLN       = 192;
+    RCC_OscInitStruct.PLL.PLLP       = 2;
+    RCC_OscInitStruct.PLL.PLLQ       = 20;
+    RCC_OscInitStruct.PLL.PLLR       = 2;
+    RCC_OscInitStruct.PLL.PLLRGE     = RCC_PLL1VCIRANGE_2;
+    RCC_OscInitStruct.PLL.PLLVCOSEL  = RCC_PLL1VCOWIDE;
+    RCC_OscInitStruct.PLL.PLLFRACN   = 0;
+    if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+    {
+        Error_Handler();
+    }
 
-  /** Initializes the CPU, AHB and APB buses clocks
+    /** Initializes the CPU, AHB and APB buses clocks
   */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
-                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2
-                              |RCC_CLOCKTYPE_D3PCLK1|RCC_CLOCKTYPE_D1PCLK1;
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
-  RCC_ClkInitStruct.SYSCLKDivider = RCC_SYSCLK_DIV1;
-  RCC_ClkInitStruct.AHBCLKDivider = RCC_HCLK_DIV2;
-  RCC_ClkInitStruct.APB3CLKDivider = RCC_APB3_DIV2;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_APB1_DIV2;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_APB2_DIV2;
-  RCC_ClkInitStruct.APB4CLKDivider = RCC_APB4_DIV2;
+    RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK
+        | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2
+        | RCC_CLOCKTYPE_D3PCLK1 | RCC_CLOCKTYPE_D1PCLK1;
+    RCC_ClkInitStruct.SYSCLKSource   = RCC_SYSCLKSOURCE_PLLCLK;
+    RCC_ClkInitStruct.SYSCLKDivider  = RCC_SYSCLK_DIV1;
+    RCC_ClkInitStruct.AHBCLKDivider  = RCC_HCLK_DIV2;
+    RCC_ClkInitStruct.APB3CLKDivider = RCC_APB3_DIV2;
+    RCC_ClkInitStruct.APB1CLKDivider = RCC_APB1_DIV2;
+    RCC_ClkInitStruct.APB2CLKDivider = RCC_APB2_DIV2;
+    RCC_ClkInitStruct.APB4CLKDivider = RCC_APB4_DIV2;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4) != HAL_OK)
-  {
-    Error_Handler();
-  }
+    if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4) != HAL_OK)
+    {
+        Error_Handler();
+    }
 
-  /** Initializes the peripherals clock
+    /** Initializes the peripherals clock
   */
-  PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_QSPI|RCC_PERIPHCLK_SPI1;
-  PeriphClkInitStruct.PLL2.PLL2M = 5;
-  PeriphClkInitStruct.PLL2.PLL2N = 192;
-  PeriphClkInitStruct.PLL2.PLL2P = 8;
-  PeriphClkInitStruct.PLL2.PLL2Q = 2;
-  PeriphClkInitStruct.PLL2.PLL2R = 4;
-  PeriphClkInitStruct.PLL2.PLL2RGE = RCC_PLL2VCIRANGE_2;
-  PeriphClkInitStruct.PLL2.PLL2VCOSEL = RCC_PLL2VCOWIDE;
-  PeriphClkInitStruct.PLL2.PLL2FRACN = 0;
-  PeriphClkInitStruct.QspiClockSelection = RCC_QSPICLKSOURCE_PLL2;
-  PeriphClkInitStruct.Spi123ClockSelection = RCC_SPI123CLKSOURCE_PLL2;
-  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
-  {
-    Error_Handler();
-  }
+    PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_QSPI | RCC_PERIPHCLK_SPI1;
+    PeriphClkInitStruct.PLL2.PLL2M           = 5;
+    PeriphClkInitStruct.PLL2.PLL2N           = 192;
+    PeriphClkInitStruct.PLL2.PLL2P           = 8;
+    PeriphClkInitStruct.PLL2.PLL2Q           = 2;
+    PeriphClkInitStruct.PLL2.PLL2R           = 4;
+    PeriphClkInitStruct.PLL2.PLL2RGE         = RCC_PLL2VCIRANGE_2;
+    PeriphClkInitStruct.PLL2.PLL2VCOSEL      = RCC_PLL2VCOWIDE;
+    PeriphClkInitStruct.PLL2.PLL2FRACN       = 0;
+    PeriphClkInitStruct.QspiClockSelection   = RCC_QSPICLKSOURCE_PLL2;
+    PeriphClkInitStruct.Spi123ClockSelection = RCC_SPI123CLKSOURCE_PLL2;
+    if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
+    {
+        Error_Handler();
+    }
+
+    PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_SAI3;
+    PeriphClkInitStruct.PLL3.PLL3M           = 5;
+    PeriphClkInitStruct.PLL3.PLL3N           = 192;
+    PeriphClkInitStruct.PLL3.PLL3P           = 20;
+    PeriphClkInitStruct.PLL3.PLL3Q           = 2;
+    PeriphClkInitStruct.PLL3.PLL3R           = 2;
+    PeriphClkInitStruct.PLL3.PLL3RGE         = RCC_PLL3VCIRANGE_2;
+    PeriphClkInitStruct.PLL3.PLL3VCOSEL      = RCC_PLL3VCOWIDE;
+    PeriphClkInitStruct.PLL3.PLL3FRACN       = 0;
+    PeriphClkInitStruct.Sai23ClockSelection  = RCC_SAI23CLKSOURCE_PLL3;
+    if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
+    {
+        Error_Handler();
+    }
 }
 #endif
 
@@ -194,12 +215,12 @@ static int init_sram(void)
     __HAL_RCC_D2SRAM1_CLK_ENABLE();
     __HAL_RCC_D2SRAM2_CLK_ENABLE();
     __HAL_RCC_D2SRAM3_CLK_ENABLE();
-    //rt_memheap_init(&_heap_axi_sram, "axi_sram", (void *)AXI_SRAM_ADDR, AXI_SRAM_SIZE);
-    rt_memheap_init(&_heap_sram1, "sram1", (void *)SRAM1_ADDR, SRAM1_SIZE);
-    rt_memheap_init(&_heap_sram2, "sram2", (void *)SRAM2_ADDR, SRAM2_SIZE);
-    rt_memheap_init(&_heap_sram3, "sram3", (void *)SRAM3_ADDR, SRAM3_SIZE);
-    rt_memheap_init(&_heap_sram4, "sram4", (void *)SRAM4_ADDR, SRAM4_SIZE);
-    rt_memheap_init(&_heap_backup_sram, "bak_sram", (void *)BACKUP_ADDR, BACKUP_SIZE);
+    rt_memheap_init(&_heap_axi_sram, "axi_sram", (void*)AXI_SRAM_ADDR, AXI_SRAM_SIZE);
+    rt_memheap_init(&_heap_sram1, "sram1", (void*)SRAM1_ADDR, SRAM1_SIZE);
+    rt_memheap_init(&_heap_sram2, "sram2", (void*)SRAM2_ADDR, SRAM2_SIZE);
+    rt_memheap_init(&_heap_sram3, "sram3", (void*)SRAM3_ADDR, SRAM3_SIZE);
+    rt_memheap_init(&_heap_sram4, "sram4", (void*)SRAM4_ADDR, SRAM4_SIZE);
+    rt_memheap_init(&_heap_backup_sram, "bak_sram", (void*)BACKUP_ADDR, BACKUP_SIZE);
 
     return 0;
 }
@@ -211,11 +232,32 @@ INIT_BOARD_EXPORT(init_sram);
 */
 static int ota_app_vtor_reconfig(void)
 {
-    #define RT_APP_PART_ADDR 0x08020000
-    #define NVIC_VTOR_MASK   0x3FFFFF80
+#define RT_APP_PART_ADDR 0x08020000
+#define NVIC_VTOR_MASK   0x3FFFFF80
     /* Set the Vector Table base location by user application firmware definition */
     SCB->VTOR = RT_APP_PART_ADDR & NVIC_VTOR_MASK;
 
     return 0;
 }
 // INIT_BOARD_EXPORT(ota_app_vtor_reconfig);
+
+struct rt_memheap* sys_memheap_get(memheap_id_e id)
+{
+    switch (id)
+    {
+    case MEMHEAP_AXI_SRAM:
+        return &_heap_axi_sram;
+    case MEMHEAP_SRAM1:
+        return &_heap_sram1;
+    case MEMHEAP_SRAM2:
+        return &_heap_sram2;
+    case MEMHEAP_SRAM3:
+        return &_heap_sram3;
+    case MEMHEAP_SRAM4:
+        return &_heap_sram4;
+    case MEMHEAP_BACKUP_SRAM:
+        return &_heap_backup_sram;
+    default:
+        return RT_NULL;
+    }
+}

@@ -13,15 +13,18 @@
 #define __BOARD_H__
 
 #include <rtthread.h>
+#include <stdint.h>
 #include <stm32h7xx.h>
 #include "drv_common.h"
 #include "drv_gpio.h"
+#include "stm32h750xx.h"
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
-/*-------------------------- CHIP CONFIG BEGIN --------------------------*/
+    /*-------------------------- CHIP CONFIG BEGIN --------------------------*/
 
 #define CHIP_FAMILY_STM32
 #define CHIP_SERIES_STM32H7
@@ -30,27 +33,27 @@ extern "C" {
 /*-------------------------- CHIP CONFIG END --------------------------*/
 
 /*-------------------------- ROM/RAM CONFIG BEGIN --------------------------*/
-#define ROM_START              ((uint32_t)0x80000000)
-#define ROM_SIZE               (128)
-#define ROM_END                ((uint32_t)(ROM_START + ROM_SIZE * 1024))
+#define ROM_START ((uint32_t)0x80000000)
+#define ROM_SIZE  (128)
+#define ROM_END   ((uint32_t)(ROM_START + ROM_SIZE * 1024))
 
-#define RAM_START              (0x20000000)//DTCM_region
-#define RAM_SIZE               (128)
-#define RAM_END                (RAM_START + RAM_SIZE * 1024)
+#define RAM_START (0x20000000) //DTCM_region
+#define RAM_SIZE  (128)
+#define RAM_END   (RAM_START + RAM_SIZE * 1024)
 
-/*-------------------------- ROM/RAM CONFIG END --------------------------*/
+    /*-------------------------- ROM/RAM CONFIG END --------------------------*/
 
-/*-------------------------- CLOCK CONFIG BEGIN --------------------------*/
+    /*-------------------------- CLOCK CONFIG BEGIN --------------------------*/
 
-#define BSP_CLOCK_SOURCE                  ("HSE")
-#define BSP_CLOCK_SOURCE_FREQ_MHZ         ((int32_t)0)
-#define BSP_CLOCK_SYSTEM_FREQ_MHZ         ((int32_t)480)
+#define BSP_CLOCK_SOURCE          ("HSE")
+#define BSP_CLOCK_SOURCE_FREQ_MHZ ((int32_t)0)
+#define BSP_CLOCK_SYSTEM_FREQ_MHZ ((int32_t)480)
 
-/*-------------------------- CLOCK CONFIG END --------------------------*/
+    /*-------------------------- CLOCK CONFIG END --------------------------*/
 
-/*-------------------------- UART CONFIG BEGIN --------------------------*/
+    /*-------------------------- UART CONFIG BEGIN --------------------------*/
 
-/** After configuring corresponding UART or UART DMA, you can use it.
+    /** After configuring corresponding UART or UART DMA, you can use it.
  *
  * STEP 1, define macro define related to the serial port opening based on the serial port number
  *                 such as     #define BSP_USING_UATR1
@@ -67,32 +70,42 @@ extern "C" {
  *
  */
 
-#define BSP_UART1_RX_BUFSIZE   256
-#define BSP_UART1_TX_BUFSIZE   256
+#define BSP_UART1_RX_BUFSIZE 256
+#define BSP_UART1_TX_BUFSIZE 256
 
-#define STM32_FLASH_START_ADRESS       ROM_START
-#define STM32_FLASH_SIZE               ROM_SIZE
-#define STM32_FLASH_END_ADDRESS        ROM_END
+#define STM32_FLASH_START_ADRESS ROM_START
+#define STM32_FLASH_SIZE         ROM_SIZE
+#define STM32_FLASH_END_ADDRESS  ROM_END
 
-#define STM32_SRAM_SIZE                RAM_SIZE
-#define STM32_SRAM_START               RAM_START
-#define STM32_SRAM_END                 RAM_END
+#define STM32_SRAM_SIZE  RAM_SIZE
+#define STM32_SRAM_START RAM_START
+#define STM32_SRAM_END   RAM_END
 
 #if defined(__ARMCC_VERSION)
-extern int Image$$RW_IRAM1$$ZI$$Limit;
-#define HEAP_BEGIN      (&Image$$RW_IRAM1$$ZI$$Limit)
+    extern int Image$$RW_IRAM1$$ZI$$Limit;
+#define HEAP_BEGIN (&Image$$RW_IRAM1$$ZI$$Limit)
 #elif __ICCARM__
-#pragma section="CSTACK"
-#define HEAP_BEGIN      (__segment_end("CSTACK"))
+#pragma section = "CSTACK"
+#define HEAP_BEGIN (__segment_end("CSTACK"))
 #else
 extern int __bss_end;
-#define HEAP_BEGIN      (&__bss_end)
+#define HEAP_BEGIN (&__bss_end)
 #endif
 
-#define HEAP_END        STM32_SRAM_END
+#define HEAP_END STM32_SRAM_END
 
-void SystemClock_Config(void);
+    typedef enum
+    {
+        MEMHEAP_AXI_SRAM = 0,
+        MEMHEAP_SRAM1,
+        MEMHEAP_SRAM2,
+        MEMHEAP_SRAM3,
+        MEMHEAP_SRAM4,
+        MEMHEAP_BACKUP_SRAM
+    } memheap_id_e;
 
+    void               SystemClock_Config(void);
+    struct rt_memheap* sys_memheap_get(memheap_id_e id);
 #ifdef __cplusplus
 }
 #endif
