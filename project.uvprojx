@@ -212,7 +212,7 @@
             <Ra2Chk>0</Ra2Chk>
             <Ra3Chk>0</Ra3Chk>
             <Im1Chk>1</Im1Chk>
-            <Im2Chk>1</Im2Chk>
+            <Im2Chk>0</Im2Chk>
             <OnChipMemories>
               <Ocm1>
                 <Type>0</Type>
@@ -338,7 +338,7 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>__STDC_LIMIT_MACROS, RT_USING_ARMLIBC, STM32H750xx, RT_USING_LIBC, __CLK_TCK=RT_TICK_PER_SECOND, CONFIG_USB_DWC2_PORT=FS_PORT, __RTTHREAD__, USE_HAL_DRIVER</Define>
+              <Define>__STDC_LIMIT_MACROS,STM32H750xx,RT_USING_ARMLIBC, RT_USING_LIBC, __CLK_TCK=RT_TICK_PER_SECOND, CONFIG_USB_DWC2_PORT=FS_PORT, __RTTHREAD__, USE_HAL_DRIVER</Define>
               <Undefine></Undefine>
               <IncludePath>rt-thread\components\fal\inc;rt-thread\components\libc\compilers\common\extension;libraries\HAL_Drivers\CMSIS\Include;rt-thread\libcpu\arm\common;packages\CherryUSB-latest\class\dfu;libraries\HAL_Drivers;packages\CherryUSB-latest\osal;rt-thread\components\libc\posix\ipc;packages\helix-latest\pub;rt-thread\components\drivers\include;packages\wavplayer-latest;rt-thread\libcpu\arm\cortex-m7;rt-thread\components\utilities\ulog;rt-thread\components\drivers\include;rt-thread\components\libc\posix\io\poll;libraries\HAL_Drivers\config;packages\CherryUSB-latest\class\hid;rt-thread\components\libc\compilers\common\extension\fcntl\octal;packages\helix-latest\real;.;rt-thread\components\drivers\include;board;board\CubeMX_Config\Inc;packages\optparse-latest;packages\mp3player-latest;rt-thread\components\drivers\include;packages\CherryUSB-latest\class\cdc;rt-thread\components\drivers\include;rt-thread\components\finsh;rt-thread\components\drivers\include;rt-thread\components\dfs\dfs_v1\include;packages\wavplayer-latest\inc;rt-thread\components\libc\posix\io\stdio;board\port;applications;packages\CherryUSB-latest\class\audio;rt-thread\components\dfs\dfs_v1\filesystems\devfs;rt-thread\components\drivers\spi\sfud\inc;rt-thread\components\drivers\include;rt-thread\components\drivers\include;libraries\STM32H7xx_HAL\CMSIS\Device\ST\STM32H7xx\Include;rt-thread\components\drivers\spi;packages\CherryUSB-latest\class\msc;packages\CherryUSB-latest\class\wireless;libraries\STM32H7xx_HAL\STM32H7xx_HAL_Driver\Inc;rt-thread\components\libc\compilers\common\include;packages\CherryUSB-latest\common;rt-thread\include;packages\CherryUSB-latest\class\video;packages\CherryUSB-latest\core;rt-thread\components\dfs\dfs_v1\filesystems\elmfat;libraries\HAL_Drivers\drv_flash;packages\mp3player-latest\inc;rt-thread\components\drivers\audio</IncludePath>
             </VariousControls>
@@ -2854,7 +2854,7 @@
   <LayerInfo>
     <Layers>
       <Layer>
-        <LayName>&lt;Project Info&gt;</LayName>
+        <LayName>project</LayName>
         <LayTarg>0</LayTarg>
         <LayPrjMark>1</LayPrjMark>
       </Layer>

@@ -20,14 +20,14 @@ set(linker_script_SRC ${linker_script_SRC} ${CMAKE_CURRENT_SOURCE_DIR}/board/lin
 # Sources
 set(sources_SRCS ${sources_SRCS}
     ${CMAKE_CURRENT_SOURCE_DIR}/applications/main.c
-	${CMAKE_CURRENT_SOURCE_DIR}/applications/usb_init.c
-	${CMAKE_CURRENT_SOURCE_DIR}/packages/CherryUSB-latest/osal/usb_osal_rtthread.c
-	${CMAKE_CURRENT_SOURCE_DIR}/packages/CherryUSB-latest/port/dwc2/usb_glue_st.c
-	${CMAKE_CURRENT_SOURCE_DIR}/packages/CherryUSB-latest/demo/cdc_acm_template.c
-	${CMAKE_CURRENT_SOURCE_DIR}/packages/CherryUSB-latest/class/cdc/usbd_cdc.c
-	${CMAKE_CURRENT_SOURCE_DIR}/packages/CherryUSB-latest/third_party/rt-thread-5.0/msh_cmd.c
-	${CMAKE_CURRENT_SOURCE_DIR}/packages/CherryUSB-latest/core/usbd_core.c
-	${CMAKE_CURRENT_SOURCE_DIR}/packages/CherryUSB-latest/port/dwc2/usb_dc_dwc2.c
+	#${CMAKE_CURRENT_SOURCE_DIR}/applications/usb_init.c
+	#${CMAKE_CURRENT_SOURCE_DIR}/packages/CherryUSB-latest/osal/usb_osal_rtthread.c
+	#${CMAKE_CURRENT_SOURCE_DIR}/packages/CherryUSB-latest/port/dwc2/usb_glue_st.c
+	#${CMAKE_CURRENT_SOURCE_DIR}/packages/CherryUSB-latest/demo/cdc_acm_template.c
+	#${CMAKE_CURRENT_SOURCE_DIR}/packages/CherryUSB-latest/class/cdc/usbd_cdc.c
+	#${CMAKE_CURRENT_SOURCE_DIR}/packages/CherryUSB-latest/third_party/rt-thread-5.0/msh_cmd.c
+	#${CMAKE_CURRENT_SOURCE_DIR}/packages/CherryUSB-latest/core/usbd_core.c
+	#${CMAKE_CURRENT_SOURCE_DIR}/packages/CherryUSB-latest/port/dwc2/usb_dc_dwc2.c
 	${CMAKE_CURRENT_SOURCE_DIR}/rt-thread/components/libc/compilers/common/cctype.c
 	${CMAKE_CURRENT_SOURCE_DIR}/rt-thread/components/libc/compilers/common/cstdio.c
 	${CMAKE_CURRENT_SOURCE_DIR}/rt-thread/components/libc/compilers/common/cstdlib.c
@@ -73,7 +73,7 @@ set(sources_SRCS ${sources_SRCS}
 	${CMAKE_CURRENT_SOURCE_DIR}/rt-thread/components/drivers/spi/spi_flash_sfud.c
 	${CMAKE_CURRENT_SOURCE_DIR}/board/CubeMX_Config/Src/stm32h7xx_hal_msp.c
 	${CMAKE_CURRENT_SOURCE_DIR}/board/board.c
-	#${CMAKE_CURRENT_SOURCE_DIR}/board/port/audio/drv_sound.c
+	${CMAKE_CURRENT_SOURCE_DIR}/board/port/audio/drv_sound.c
 	#${CMAKE_CURRENT_SOURCE_DIR}/board/port/audio/drv_wm8978.c
 	${CMAKE_CURRENT_SOURCE_DIR}/board/port/drv_qspi_flash.c
 	${CMAKE_CURRENT_SOURCE_DIR}/board/port/drv_spi_flash.c
@@ -242,6 +242,8 @@ set(include_cxx_DIRS ${include_cxx_DIRS})
 set(include_asm_DIRS ${include_asm_DIRS})
 
 # Symbols definition
+#__STDC_LIMIT_MACROS, RT_USING_ARMLIBC, STM32H750xx, RT_USING_LIBC, 
+#__CLK_TCK=RT_TICK_PER_SECOND, CONFIG_USB_DWC2_PORT=FS_PORT, __RTTHREAD__, USE_HAL_DRIVER
 set(symbols_c_SYMB ${symbols_c_SYMB}
     "CONFIG_USB_DWC2_PORT=FS_PORT"
 	"RT_USING_LIBC"

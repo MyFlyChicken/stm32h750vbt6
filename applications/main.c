@@ -14,21 +14,21 @@
 #include <dfs_fs.h>
 
 /* defined the LED0 pin: PE3 */
-#define LED0_PIN    GET_PIN(E, 3)
+#define LED0_PIN GET_PIN(E, 3)
 
 /* TODO */
 const struct dfs_mount_tbl mount_table[2] =
-{
-    {"sd0", "/","lfs", 0, 0},
-    {0}
+    {
+        {"sd0", "/", "lfs", 0, 0},
+        {0}
 };
 
 int main(void)
 {
     int count = 1;
     /* set LED0 pin mode to output */
-    rt_pin_mode(LED0_PIN, PIN_MODE_OUTPUT);    
-    extern void cdc_acm_msc_init(void);
+    rt_pin_mode(LED0_PIN, PIN_MODE_OUTPUT);
+    //extern void cdc_acm_msc_init(void);
     //extern void cdc_acm_data_send_with_dtr_test(void);
 
     rt_sdio_init();
@@ -43,4 +43,3 @@ int main(void)
     }
     return RT_EOK;
 }
-
