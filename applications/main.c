@@ -25,17 +25,18 @@ const struct dfs_mount_tbl mount_table[2] =
 
 int main(void)
 {
-    int count = 1;
     /* set LED0 pin mode to output */
     rt_pin_mode(LED0_PIN, PIN_MODE_OUTPUT);
-    //extern void cdc_acm_msc_init(void);
-    //extern void cdc_acm_data_send_with_dtr_test(void);
 
     rt_sdio_init();
-    //cdc_acm_msc_init();
-    while (count++)
+
+    while (1)
     {
-        //cdc_acm_data_send_with_dtr_test();
+        //extern void cdc_acm_data_send_with_dtr_test(uint8_t busid);
+        //cdc_acm_data_send_with_dtr_test(0);
+        //extern void audio_v1_test(uint8_t busid);
+        //audio_v1_test(0);
+        //rt_thread_mdelay(10);
         rt_pin_write(LED0_PIN, PIN_HIGH);
         rt_thread_mdelay(500);
         rt_pin_write(LED0_PIN, PIN_LOW);
