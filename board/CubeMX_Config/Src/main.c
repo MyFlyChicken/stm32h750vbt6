@@ -45,6 +45,9 @@ QSPI_HandleTypeDef hqspi;
 
 RTC_HandleTypeDef hrtc;
 
+SAI_HandleTypeDef hsai_BlockB3;
+DMA_HandleTypeDef hdma_sai3_b;
+
 SD_HandleTypeDef hsd1;
 
 SPI_HandleTypeDef hspi1;
@@ -64,7 +67,7 @@ PCD_HandleTypeDef hpcd_USB_OTG_FS;
 void SystemClock_Config(void);
 void PeriphCommonClock_Config(void);
 static void MX_GPIO_Init(void);
-static void MX_USART1_UART_Init(void);
+static void MX_DMA_Init(void);
 static void MX_RTC_Init(void);
 static void MX_SPI4_Init(void);
 static void MX_TIM1_Init(void);
@@ -72,6 +75,8 @@ static void MX_QUADSPI_Init(void);
 static void MX_SPI1_Init(void);
 static void MX_SDMMC1_SD_Init(void);
 static void MX_USB_OTG_FS_PCD_Init(void);
+static void MX_USART1_UART_Init(void);
+static void MX_SAI3_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -112,7 +117,7 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_USART1_UART_Init();
+  MX_DMA_Init();
   MX_RTC_Init();
   MX_SPI4_Init();
   MX_TIM1_Init();
@@ -120,6 +125,8 @@ int main(void)
   MX_SPI1_Init();
   MX_SDMMC1_SD_Init();
   MX_USB_OTG_FS_PCD_Init();
+  MX_USART1_UART_Init();
+  MX_SAI3_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -150,12 +157,6 @@ void SystemClock_Config(void)
 
   /** Configure the main internal regulator output voltage
   */
-  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
-
-  while(!__HAL_PWR_GET_FLAG(PWR_FLAG_VOSRDY)) {}
-
-  __HAL_RCC_SYSCFG_CLK_ENABLE();
-  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE0);
 
   while(!__HAL_PWR_GET_FLAG(PWR_FLAG_VOSRDY)) {}
 
@@ -163,10 +164,6 @@ void SystemClock_Config(void)
   */
   HAL_PWR_EnableBkUpAccess();
   __HAL_RCC_LSEDRIVE_CONFIG(RCC_LSEDRIVE_LOW);
-
-  /** Macro to configure the PLL clock source
-  */
-  __HAL_RCC_PLL_PLLSOURCE_CONFIG(RCC_PLLSOURCE_HSE);
 
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
@@ -202,7 +199,7 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.APB2CLKDivider = RCC_APB2_DIV2;
   RCC_ClkInitStruct.APB4CLKDivider = RCC_APB4_DIV2;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
   {
     Error_Handler();
   }
@@ -303,6 +300,42 @@ static void MX_RTC_Init(void)
   /* USER CODE BEGIN RTC_Init 2 */
 
   /* USER CODE END RTC_Init 2 */
+
+}
+
+/**
+  * @brief SAI3 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_SAI3_Init(void)
+{
+
+  /* USER CODE BEGIN SAI3_Init 0 */
+
+  /* USER CODE END SAI3_Init 0 */
+
+  /* USER CODE BEGIN SAI3_Init 1 */
+
+  /* USER CODE END SAI3_Init 1 */
+  hsai_BlockB3.Instance = SAI3_Block_B;
+  hsai_BlockB3.Init.AudioMode = SAI_MODEMASTER_TX;
+  hsai_BlockB3.Init.Synchro = SAI_ASYNCHRONOUS;
+  hsai_BlockB3.Init.OutputDrive = SAI_OUTPUTDRIVE_DISABLE;
+  hsai_BlockB3.Init.NoDivider = SAI_MASTERDIVIDER_ENABLE;
+  hsai_BlockB3.Init.FIFOThreshold = SAI_FIFOTHRESHOLD_EMPTY;
+  hsai_BlockB3.Init.AudioFrequency = SAI_AUDIO_FREQUENCY_96K;
+  hsai_BlockB3.Init.SynchroExt = SAI_SYNCEXT_DISABLE;
+  hsai_BlockB3.Init.MonoStereoMode = SAI_STEREOMODE;
+  hsai_BlockB3.Init.CompandingMode = SAI_NOCOMPANDING;
+  hsai_BlockB3.Init.TriState = SAI_OUTPUT_NOTRELEASED;
+  if (HAL_SAI_InitProtocol(&hsai_BlockB3, SAI_I2S_STANDARD, SAI_PROTOCOL_DATASIZE_16BIT, 2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN SAI3_Init 2 */
+
+  /* USER CODE END SAI3_Init 2 */
 
 }
 
@@ -598,6 +631,22 @@ static void MX_USB_OTG_FS_PCD_Init(void)
 }
 
 /**
+  * Enable DMA controller clock
+  */
+static void MX_DMA_Init(void)
+{
+
+  /* DMA controller clock enable */
+  __HAL_RCC_DMA2_CLK_ENABLE();
+
+  /* DMA interrupt init */
+  /* DMA2_Stream3_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA2_Stream3_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA2_Stream3_IRQn);
+
+}
+
+/**
   * @brief GPIO Initialization Function
   * @param None
   * @retval None
@@ -605,6 +654,8 @@ static void MX_USB_OTG_FS_PCD_Init(void)
 static void MX_GPIO_Init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
+/* USER CODE BEGIN MX_GPIO_Init_1 */
+/* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOE_CLK_ENABLE();
@@ -634,6 +685,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
 
+/* USER CODE BEGIN MX_GPIO_Init_2 */
+/* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
