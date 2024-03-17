@@ -194,9 +194,9 @@ void SystemClock_Config(void)
     }
 
     PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_SAI3;
-    PeriphClkInitStruct.PLL3.PLL3M           = 5;
-    PeriphClkInitStruct.PLL3.PLL3N           = 192;
-    PeriphClkInitStruct.PLL3.PLL3P           = 20;
+    PeriphClkInitStruct.PLL3.PLL3M           = 25;
+    PeriphClkInitStruct.PLL3.PLL3N           = 246;
+    PeriphClkInitStruct.PLL3.PLL3P           = 2;
     PeriphClkInitStruct.PLL3.PLL3Q           = 2;
     PeriphClkInitStruct.PLL3.PLL3R           = 2;
     PeriphClkInitStruct.PLL3.PLL3RGE         = RCC_PLL3VCIRANGE_2;

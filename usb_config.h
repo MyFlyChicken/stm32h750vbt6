@@ -5,10 +5,10 @@
  */
 #ifndef CHERRYUSB_CONFIG_H
 #define CHERRYUSB_CONFIG_H
-
 #include "rtthread.h"
 
-#define CHERRYUSB_VERSION 0x000900
+#define CHERRYUSB_VERSION     0x010100
+#define CHERRYUSB_VERSION_STR "v1.1.0"
 
 /* ================ USB common Configuration ================ */
 
@@ -34,6 +34,8 @@
 
 /* ================= USB Device Stack Configuration ================ */
 
+#define CONFIG_USBDEV_MAX_BUS 1 // for now, bus num must be 1 except hpm ip
+
 /* Ep0 max transfer buffer, specially for receiving data from ep0 out */
 #define CONFIG_USBDEV_REQUEST_BUFFER_LEN 256
 
@@ -42,6 +44,8 @@
 
 /* Check if the input descriptor is correct */
 #define CONFIG_USBDEV_DESC_CHECK
+
+#define CONFIG_USB_DWC2_RAM_SIZE 1280
 
 /* Enable test mode */
 // #define CONFIG_USBDEV_TEST_MODE
@@ -65,6 +69,29 @@
 #ifndef CONFIG_USBDEV_RX_STACKSIZE
 #define CONFIG_USBDEV_RX_STACKSIZE 2048
 #endif
+#endif
+
+/* Ep0 max transfer buffer, specially for receiving data from ep0 out */
+
+/* Enable test mode */
+// #define CONFIG_USBDEV_TEST_MODE
+
+#ifndef CONFIG_USBDEV_MSC_MAX_BUFSIZE
+#define CONFIG_USBDEV_MSC_MAX_BUFSIZE 512
+#endif
+
+// #define CONFIG_USBDEV_MSC_THREAD
+
+#ifndef CONFIG_USBDEV_MSC_PRIO
+#define CONFIG_USBDEV_MSC_PRIO 4
+#endif
+
+#ifndef CONFIG_USBDEV_MSC_MAX_LUN
+#define CONFIG_USBDEV_MSC_MAX_LUN 1
+#endif
+
+#ifndef CONFIG_USBDEV_MSC_STACKSIZE
+#define CONFIG_USBDEV_MSC_STACKSIZE 2048
 #endif
 
 #ifndef CONFIG_USBDEV_MSC_BLOCK_SIZE
@@ -103,11 +130,12 @@
 
 /* ================ USB HOST Stack Configuration ================== */
 
+#define CONFIG_USBHOST_MAX_BUS              1
 #define CONFIG_USBHOST_MAX_RHPORTS          1
 #define CONFIG_USBHOST_MAX_EXTHUBS          1
 #define CONFIG_USBHOST_MAX_EHPORTS          4
-#define CONFIG_USBHOST_MAX_INTERFACES       6
-#define CONFIG_USBHOST_MAX_INTF_ALTSETTINGS 1
+#define CONFIG_USBHOST_MAX_INTERFACES       8
+#define CONFIG_USBHOST_MAX_INTF_ALTSETTINGS 8
 #define CONFIG_USBHOST_MAX_ENDPOINTS        4
 
 #define CONFIG_USBHOST_MAX_CDC_ACM_CLASS 4
@@ -115,18 +143,20 @@
 #define CONFIG_USBHOST_MAX_MSC_CLASS     2
 #define CONFIG_USBHOST_MAX_AUDIO_CLASS   1
 #define CONFIG_USBHOST_MAX_VIDEO_CLASS   1
-#define CONFIG_USBHOST_MAX_RNDIS_CLASS   1
 
 #define CONFIG_USBHOST_DEV_NAMELEN 16
 
 #ifndef CONFIG_USBHOST_PSC_PRIO
-#define CONFIG_USBHOST_PSC_PRIO 4
+#define CONFIG_USBHOST_PSC_PRIO 0
 #endif
 #ifndef CONFIG_USBHOST_PSC_STACKSIZE
 #define CONFIG_USBHOST_PSC_STACKSIZE 2048
 #endif
 
 //#define CONFIG_USBHOST_GET_STRING_DESC
+
+// #define CONFIG_USBHOST_MSOS_ENABLE
+#define CONFIG_USBHOST_MSOS_VENDOR_CODE 0x00
 
 /* Ep0 max transfer buffer */
 #define CONFIG_USBHOST_REQUEST_BUFFER_LEN 512
@@ -139,24 +169,38 @@
 #define CONFIG_USBHOST_MSC_TIMEOUT 5000
 #endif
 
+#define CONFIG_USBHOST_BLUETOOTH_HCI_H4
+// #define CONFIG_USBHOST_BLUETOOTH_HCI_LOG
+
+#ifndef CONFIG_USBHOST_BLUETOOTH_TX_SIZE
+#define CONFIG_USBHOST_BLUETOOTH_TX_SIZE 2048
+#endif
+#ifndef CONFIG_USBHOST_BLUETOOTH_RX_SIZE
+#define CONFIG_USBHOST_BLUETOOTH_RX_SIZE 2048
+#endif
+
 /* ================ USB Device Port Configuration ================*/
 
-//#define USBD_IRQHandler USBD_IRQHandler
-//#define USB_BASE (0x40080000UL)
-//#define USB_NUM_BIDIR_ENDPOINTS 4
+#ifndef CONFIG_USBDEV_EP_NUM
+#define CONFIG_USBDEV_EP_NUM 9
+#endif
+
+#define CONFIG_USB_DWC2_TX6_FIFO_SIZE (512)
+#define CONFIG_USB_DWC2_TX7_FIFO_SIZE (512)
+#define CONFIG_USB_DWC2_TX8_FIFO_SIZE (512)
 
 /* ================ USB Host Port Configuration ==================*/
 
-#define CONFIG_USBHOST_PIPE_NUM 10
+//#define CONFIG_USBHOST_PIPE_NUM 10
 
 /* ================ EHCI Configuration ================ */
 
-#define CONFIG_USB_EHCI_HCCR_BASE       (0x20072000)
-#define CONFIG_USB_EHCI_HCOR_BASE       (0x20072000 + 0x10)
+#define CONFIG_USB_EHCI_HCCR_OFFSET     (0x0)
+#define CONFIG_USB_EHCI_HCOR_OFFSET     (0x10)
 #define CONFIG_USB_EHCI_FRAME_LIST_SIZE 1024
-// #define CONFIG_USB_EHCI_INFO_ENABLE
-// #define CONFIG_USB_ECHI_HCOR_RESERVED_DISABLE
+// #define CONFIG_USB_EHCI_HCOR_RESERVED_DISABLE
 // #define CONFIG_USB_EHCI_CONFIGFLAG
 // #define CONFIG_USB_EHCI_PORT_POWER
+// #define CONFIG_USB_EHCI_PRINT_HW_PARAM
 
 #endif
