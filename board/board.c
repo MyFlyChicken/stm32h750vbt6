@@ -10,10 +10,11 @@
 
 #include "board.h"
 #include "rtdef.h"
+#include "stm32h7xx_hal_rcc.h"
 #include <stdint.h>
 
-#define AXI_SRAM_ADDR (0x24022000)
-#define AXI_SRAM_SIZE (0x0005E000)
+#define AXI_SRAM_ADDR (0x24000000)
+#define AXI_SRAM_SIZE (0x00060000)
 #define SRAM1_ADDR    (0X30000000)
 #define SRAM1_SIZE    (128 * 1024)
 #define SRAM2_ADDR    (0X30020000)
