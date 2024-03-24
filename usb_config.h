@@ -5,17 +5,16 @@
  */
 #ifndef CHERRYUSB_CONFIG_H
 #define CHERRYUSB_CONFIG_H
-#include "rtthread.h"
 
 #define CHERRYUSB_VERSION     0x010100
 #define CHERRYUSB_VERSION_STR "v1.1.0"
 
 /* ================ USB common Configuration ================ */
 
-#define CONFIG_USB_PRINTF(...) rt_kprintf(__VA_ARGS__)
+#define CONFIG_USB_PRINTF(...) printf(__VA_ARGS__)
 
-#define usb_malloc(size) rt_malloc(size)
-#define usb_free(ptr)    rt_free(ptr)
+#define usb_malloc(size) malloc(size)
+#define usb_free(ptr)    free(ptr)
 
 #ifndef CONFIG_USB_DBG_LEVEL
 #define CONFIG_USB_DBG_LEVEL USB_DBG_INFO
@@ -40,62 +39,31 @@
 #define CONFIG_USBDEV_REQUEST_BUFFER_LEN 256
 
 /* Setup packet log for debug */
-#define CONFIG_USBDEV_SETUP_LOG_PRINT
+// #define CONFIG_USBDEV_SETUP_LOG_PRINT
 
 /* Check if the input descriptor is correct */
-#define CONFIG_USBDEV_DESC_CHECK
-
-#define CONFIG_USB_DWC2_RAM_SIZE 1280
+// #define CONFIG_USBDEV_DESC_CHECK
 
 /* Enable test mode */
 // #define CONFIG_USBDEV_TEST_MODE
-
-#define CONFIG_USBDEV_TX_THREAD
-#define CONFIG_USBDEV_RX_THREAD
-
-#ifdef CONFIG_USBDEV_TX_THREAD
-#ifndef CONFIG_USBDEV_TX_PRIO
-#define CONFIG_USBDEV_TX_PRIO 4
-#endif
-#ifndef CONFIG_USBDEV_TX_STACKSIZE
-#define CONFIG_USBDEV_TX_STACKSIZE 2048
-#endif
-#endif
-
-#ifdef CONFIG_USBDEV_RX_THREAD
-#ifndef CONFIG_USBDEV_RX_PRIO
-#define CONFIG_USBDEV_RX_PRIO 4
-#endif
-#ifndef CONFIG_USBDEV_RX_STACKSIZE
-#define CONFIG_USBDEV_RX_STACKSIZE 2048
-#endif
-#endif
-
-/* Ep0 max transfer buffer, specially for receiving data from ep0 out */
-
-/* Enable test mode */
-// #define CONFIG_USBDEV_TEST_MODE
-
-#ifndef CONFIG_USBDEV_MSC_MAX_BUFSIZE
-#define CONFIG_USBDEV_MSC_MAX_BUFSIZE 512
-#endif
-
-// #define CONFIG_USBDEV_MSC_THREAD
-
-#ifndef CONFIG_USBDEV_MSC_PRIO
-#define CONFIG_USBDEV_MSC_PRIO 4
-#endif
+#define CONFIG_USB_DWC2_RAM_SIZE      (4096)
+#define CONFIG_USB_DWC2_RX_FIFO_SIZE  (1024)
+#define CONFIG_USB_DWC2_TX0_FIFO_SIZE (128)
+#define CONFIG_USB_DWC2_TX1_FIFO_SIZE (1024)
+#define CONFIG_USB_DWC2_TX2_FIFO_SIZE (1024)
+#define CONFIG_USB_DWC2_TX3_FIFO_SIZE (1024)
+#define CONFIG_USB_DWC2_TX4_FIFO_SIZE (1024)
+#define CONFIG_USB_DWC2_TX5_FIFO_SIZE (1024)
+#define CONFIG_USB_DWC2_TX6_FIFO_SIZE (1024)
+#define CONFIG_USB_DWC2_TX7_FIFO_SIZE (1024)
+#define CONFIG_USB_DWC2_TX8_FIFO_SIZE (1024)
 
 #ifndef CONFIG_USBDEV_MSC_MAX_LUN
 #define CONFIG_USBDEV_MSC_MAX_LUN 1
 #endif
 
-#ifndef CONFIG_USBDEV_MSC_STACKSIZE
-#define CONFIG_USBDEV_MSC_STACKSIZE 2048
-#endif
-
-#ifndef CONFIG_USBDEV_MSC_BLOCK_SIZE
-#define CONFIG_USBDEV_MSC_BLOCK_SIZE 4096
+#ifndef CONFIG_USBDEV_MSC_MAX_BUFSIZE
+#define CONFIG_USBDEV_MSC_MAX_BUFSIZE 512
 #endif
 
 #ifndef CONFIG_USBDEV_MSC_MANUFACTURER_STRING
@@ -110,8 +78,18 @@
 #define CONFIG_USBDEV_MSC_VERSION_STRING "0.01"
 #endif
 
+// #define CONFIG_USBDEV_MSC_THREAD
+
+#ifndef CONFIG_USBDEV_MSC_PRIO
+#define CONFIG_USBDEV_MSC_PRIO 4
+#endif
+
+#ifndef CONFIG_USBDEV_MSC_STACKSIZE
+#define CONFIG_USBDEV_MSC_STACKSIZE 2048
+#endif
+
 #ifndef CONFIG_USBDEV_RNDIS_RESP_BUFFER_SIZE
-#define CONFIG_USBDEV_RNDIS_RESP_BUFFER_SIZE 128
+#define CONFIG_USBDEV_RNDIS_RESP_BUFFER_SIZE 156
 #endif
 
 #ifndef CONFIG_USBDEV_RNDIS_ETH_MAX_FRAME_SIZE
@@ -185,13 +163,9 @@
 #define CONFIG_USBDEV_EP_NUM 9
 #endif
 
-#define CONFIG_USB_DWC2_TX6_FIFO_SIZE (512)
-#define CONFIG_USB_DWC2_TX7_FIFO_SIZE (512)
-#define CONFIG_USB_DWC2_TX8_FIFO_SIZE (512)
-
 /* ================ USB Host Port Configuration ==================*/
 
-//#define CONFIG_USBHOST_PIPE_NUM 10
+// #define CONFIG_USBHOST_PIPE_NUM 10
 
 /* ================ EHCI Configuration ================ */
 
