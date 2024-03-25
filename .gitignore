@@ -40,3 +40,8 @@ RTE/
 settings/
 *.uvguix*
 cconfig.h
+CherryUSB-latest/
+helix-latest/
+littlefs-latest/
+mp3player-latest/
+optparse-latest/
